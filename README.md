@@ -1,2 +1,2 @@
 # pws
-old school project with a bunch of code
+This repository contains a bunch of code that I used for a project (my pws) at my school.
